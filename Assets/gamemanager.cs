@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class gamemanager : MonoBehaviour
 {
@@ -44,5 +45,9 @@ public class gamemanager : MonoBehaviour
             isplaying = false;
         }
         
+    }
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }
