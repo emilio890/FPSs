@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
+using DG.Tweening;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private GameObject knife;
     public List<Transform> patrullaje = new List<Transform>();
+    
+    private int currentPoint = 0;
     
 
     private void Awake()
@@ -31,7 +34,22 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            agent.destination = patrullaje[0].position;
+            if(Vector3.Distance(transform.position, patrullaje[currentPoint].position)>= 3)
+            {
+                agent.destination = patrullaje[currentPoint].position;
+            }
+            else
+            {
+                if (currentPoint < patrullaje.Count-1)
+                {
+                    currentPoint++;
+                }
+                else
+                {
+                    currentPoint = 0;
+                }
+            }
+                
         }
            
 
@@ -47,9 +65,12 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(float value)
     {
         heal -= value;
+        GetComponent<MeshRenderer>().material.DOColor(Color.red, 1).From();
+        GetComponent<MeshRenderer>().material.DOColor(Color.gray, 1);
         if (heal <=0)
         {
             Destroy(this.gameObject);
         }
     }
+    
 }

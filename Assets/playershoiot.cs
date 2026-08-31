@@ -13,6 +13,8 @@ public class playershoiot : MonoBehaviour
     private TMP_Text bulletText;
     [SerializeField]
     private ParticleSystem shootParticles;
+    [SerializeField]
+    private AudioSource shootaudio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
     {
@@ -55,6 +57,7 @@ public class playershoiot : MonoBehaviour
         {
             RaycastHit hit;
             bullet--;
+            shootaudio.Play();
             UpdateBulletText();
           
              shootParticles.Play();
