@@ -50,4 +50,8 @@ public class gamemanager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void AddTime(float time)
+    {
+        gametime += time;
+    }
 }

@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private GameObject knife;
     public List<Transform> patrullaje = new List<Transform>();
+    [SerializeField]
+    private GameObject loot;
     
     private int currentPoint = 0;
     
@@ -21,7 +23,16 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
-        player = GameObject.Find("player").transform;
+        int value = Random.Range(0, 10);
+        if (value > 5)
+        {
+            loot.SetActive(false);
+        }
+        else
+        {
+            loot.SetActive(true);
+        }
+            player = GameObject.Find("player").transform;
         agent.stoppingDistance = 3;
     }
 
@@ -69,6 +80,7 @@ public class EnemyScript : MonoBehaviour
         GetComponent<MeshRenderer>().material.DOColor(Color.gray, 1);
         if (heal <=0)
         {
+            Instantiate(loot, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
