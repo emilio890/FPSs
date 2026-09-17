@@ -23,15 +23,15 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
-        int value = Random.Range(0, 10);
-        if (value > 5)
-        {
-            loot.SetActive(false);
-        }
-        else
-        {
-            loot.SetActive(true);
-        }
+        //int value = Random.Range(0, 10);
+        //if (value > 5)
+        //{
+        //    loot.SetActive(false);
+        //}
+        //else
+        //{
+        //    loot.SetActive(true);
+        //}
             player = GameObject.Find("player").transform;
         agent.stoppingDistance = 3;
     }
@@ -80,8 +80,18 @@ public class EnemyScript : MonoBehaviour
         GetComponent<MeshRenderer>().material.DOColor(Color.gray, 1);
         if (heal <=0)
         {
-            Instantiate(loot, transform.position, Quaternion.identity);
+            int values = Random.Range(0, 10);
+            if (values > 5)
+            {
+                Instantiate(loot, transform.position, Quaternion.identity);
+                
+            }
+            else
+            {
+                
+            }
             Destroy(this.gameObject);
+            gamemanager.instance.addscore(500);
         }
     }
     

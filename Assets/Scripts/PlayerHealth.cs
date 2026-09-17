@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         healthslider.value = health / 10;
         if (health <= 0)
         {
-            gamemanager.instance.ReloadLevel();
+            gamemanager.instance.GameOver();
         }
     }
 }

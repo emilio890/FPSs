@@ -46,7 +46,7 @@ public class lootscript : MonoBehaviour
             switch (currentselection)
             {
                 case pickupselection.Life:
-                    other.GetComponent<PlayerHealth>().TakeDamage(-amountAmmo);
+                    other.GetComponent<PlayerHealth>().TakeDamage(-amountLife);
                     break;
                 case pickupselection.ammo:
                     other.transform.GetChild(0).GetComponent<playershoiot>().AddBullets(amountAmmo);

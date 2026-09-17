@@ -2,6 +2,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class movementscript : MonoBehaviour
 {
@@ -74,4 +75,5 @@ public class movementscript : MonoBehaviour
             controller.Move(finalMove * Time.deltaTime);
         }
     }
+    
 }
